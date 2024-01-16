@@ -33,7 +33,7 @@ priceInput.forEach(input => {
         let minVal = parseInt(priceInput[0].value),
             maxVal = parseInt(priceInput[1].value);
 
-        if ((maxVal - minVal >= priceGap) && maxVal <=10000) { // 10000 is the max for the input in html
+        if ((maxVal - minVal >= priceGap) && maxVal <=2000) { // 10000 is the max for the input in html
             if (e.target.className === "input-min") { // if active input is min input
                 rangeInput[0].value = minVal;
                 progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
