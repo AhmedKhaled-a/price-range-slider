@@ -9,8 +9,6 @@ rangeInput.forEach(input => {
         let minVal = parseInt(rangeInput[0].value),
             maxVal = parseInt(rangeInput[1].value);
 
-
-
         if (maxVal - minVal < priceGap) {
             if (e.target.className === "range-min") { // if active slider is min slider
                 rangeInput[0].value = maxVal - priceGap;
@@ -33,15 +31,14 @@ priceInput.forEach(input => {
         let minVal = parseInt(priceInput[0].value),
             maxVal = parseInt(priceInput[1].value);
 
-        if ((maxVal - minVal >= priceGap) && maxVal <=2000) { // 10000 is the max for the input in html
+        if ((maxVal - minVal >= priceGap) && maxVal <= rangeInput[1].max && minVal >= rangeInput[0].min) {
             if (e.target.className === "input-min") { // if active input is min input
                 rangeInput[0].value = minVal;
                 progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+            }else {
+                rangeInput[1].value = maxVal;
+                progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
             }
-
-        } else {
-            rangeInput[1].value = maxVal;
-            progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
-        }
+        } 
     })
 })
